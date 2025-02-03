@@ -8,9 +8,11 @@ function App() {
       <div className="page">
         <Header />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+          </Routes>
+        </main>
       </div>
     </div>
   );

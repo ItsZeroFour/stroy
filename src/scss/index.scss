@@ -24,6 +24,10 @@ body {
 
   background: var(--color-bg);
   color: var(--color-dark);
+
+  @media (max-width: 520px) {
+    font-size: 10px;
+  }
 }
 
 html {

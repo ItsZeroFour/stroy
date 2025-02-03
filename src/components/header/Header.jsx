@@ -1,14 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./style.module.scss";
-import logo from "../../assets/logo.svg";
-import logo_title from "../../assets/logo__title.svg";
 import { Link } from "react-router-dom";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 80) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <header className={`${style.header} ${openMenu && style.header__active}`}>
+    <header
+      className={`${style.header} ${openMenu && style.header__active} ${
+        isSticky && style.header__sticky
+      }`}
+    >
       <div className="container">
         <div className={style.header__wrapper}>
           <Link to="/">
@@ -127,7 +146,7 @@ const Header = () => {
               <p>Пн - Вс с 8:00 до 18:00</p>
             </div>
 
-            <button to="/">Оставить заявку</button>
+            <Link to="#contacts">Оставить заявку</Link>
           </div>
 
           <button
@@ -173,7 +192,7 @@ const Header = () => {
           </nav>
 
           <div className={style.header__menu__phone}>
-            <button>Оставить заявку</button>
+            <Link to="#contacts">Оставить заявку</Link>
             <Link to="tel:+79672123132">+7 967 212 31 32</Link>
             <p>Пн - Вс с 8:00 до 18:00</p>
           </div>
