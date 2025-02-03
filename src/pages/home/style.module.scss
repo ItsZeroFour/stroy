@@ -1,0 +1,257 @@
+.home {
+  width: 100vw;
+  height: 100vh;
+
+  background: url("../../assets/images/bg-min.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  color: var(--color-white);
+}
+
+.home__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  gap: 20px;
+
+  height: 100vh;
+
+  .home__location {
+    display: flex;
+    gap: 10px;
+    z-index: 0;
+
+    p {
+      font-family: "Montserrat-md", sans-serif;
+      font-weight: 500;
+      opacity: 0.7;
+    }
+  }
+
+  h1 {
+    font-size: 60px;
+    line-height: 72px;
+    text-transform: uppercase;
+    width: 1170px;
+
+    @media (max-width: 1200px) {
+      width: 100%;
+      font-size: 48px;
+    }
+
+    @media (max-width: 960px) {
+      font-size: 36px;
+      line-height: 52px;
+    }
+
+    @media (max-width: 728px) {
+      font-size: 28px;
+      line-height: 42px;
+    }
+
+    @media (max-width: 560px) {
+      font-size: 24px;
+      line-height: 36px;
+    }
+
+    @media (max-width: 476px) {
+      font-size: 20px;
+      line-height: 32px;
+    }
+
+    @media (max-width: 340px) {
+      font-size: 18px;
+      line-height: 32px;
+    }
+  }
+
+  @media (max-height: 780px) {
+    height: 100%;
+    margin-top: 120px;
+  }
+}
+
+.home__info__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+
+  @media (max-width: 1200px) {
+    flex-direction: column;
+    align-items: start;
+  }
+}
+
+.home__info {
+  & > p {
+    margin-top: 5px;
+    font-size: 10px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    opacity: 0.7;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+}
+
+.home__form {
+  border: 1px solid rgba(67, 68, 71, 0.9);
+  padding: 10px;
+  backdrop-filter: blur(10px);
+  border-radius: 7px;
+
+  form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    z-index: -1;
+
+    @media (max-width: 728px) {
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+
+  input {
+    padding: 11px 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    border-radius: 7px;
+
+    @media (max-width: 728px) {
+      width: 100%;
+    }
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+
+  button {
+    padding: 10px 25px;
+    background: var(--color-blue);
+    color: var(--color-white);
+    border-radius: 7px;
+
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    transition: all 0.2s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    @media (max-width: 728px) {
+      width: 100%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 728px) {
+    width: 100%;
+  }
+}
+
+.home__video {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .home__video__text {
+    p {
+      &:first-child {
+        font-family: "Unbounded-md", sans-serif;
+        font-weight: 500;
+      }
+
+      &:last-child {
+        font-family: "Montserrat-md", sans-serif;
+        font-weight: 500;
+        opacity: 0.7;
+        margin-top: 3px;
+      }
+    }
+  }
+
+  button {
+    background: rgba(39, 47, 125, 0.302);
+    border-radius: 50%;
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .home__video__button__container {
+      background: rgba(39, 47, 125, 0.9);
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.home__gift {
+  margin-top: 70px;
+
+  display: flex;
+  gap: 15px;
+
+  p {
+    width: 380px;
+    font-family: "Montserrat-md", sans-serif;
+
+    @media (max-width: 476px) {
+      width: 100%;
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    order: 1;
+    margin-top: 0px;
+  }
+}
+
+.home__wrapper {
+  @media (max-width: 560px) {
+    h1 {
+      order: 0;
+    }
+
+    .home__info {
+      order: 2;
+    }
+
+    .home__video {
+      display: none;
+    }
+  }
+}
+
+.home__video__2 {
+  display: none;
+
+  @media (max-width: 560px) {
+    display: flex !important;
+    order: 2;
+  }
+}
