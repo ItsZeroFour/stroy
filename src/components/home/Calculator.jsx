@@ -7,10 +7,51 @@ import "rc-slider/assets/index.css";
 const Calculator = ({ setOpenModal }) => {
   const [price, setPrice] = useState(6000000);
   const [contribution, setContribution] = useState(600000);
+  const [contributionProcents, setContributionProcents] = useState(1);
   const [rublesContribution, setRublesContribution] = useState(true);
   const [enabled, setEnabled] = useState(false);
   const [interestRate, setInterestRate] = useState(14);
   const [age, setAge] = useState(10);
+
+  const changePriceWiaButton = (appearance) => {
+    if (appearance === "-") {
+      setPrice((prevPrice) => Math.max(6000000, prevPrice - 1000000));
+    } else {
+      setPrice((prevPrice) => Math.min(50000000, prevPrice + 1000000));
+    }
+  };
+
+  const changeContributionWiaButton = (appearance) => {
+    if (appearance === "-") {
+      setContribution((prevPrice) => Math.max(600000, prevPrice - 100000));
+    } else {
+      setContribution((prevPrice) => Math.min(2700000, prevPrice + 100000));
+    }
+  };
+
+  const changeContributionWiaButton2 = (appearance) => {
+    if (appearance === "-") {
+      setContributionProcents((prevPrice) => Math.max(1, prevPrice - 10));
+    } else {
+      setContributionProcents((prevPrice) => Math.min(100, prevPrice + 10));
+    }
+  };
+
+  const changeInterestRateWiaButton = (appearance) => {
+    if (appearance === "-") {
+      setInterestRate((prevPrice) => Math.max(3, prevPrice - 10));
+    } else {
+      setInterestRate((prevPrice) => Math.min(100, prevPrice + 10));
+    }
+  };
+
+  const changeAgeWiaButton = (appearance) => {
+    if (appearance === "-") {
+      setAge((prevPrice) => Math.max(3, prevPrice - 1));
+    } else {
+      setAge((prevPrice) => Math.min(100, prevPrice + 1));
+    }
+  };
 
   return (
     <section className={style.calculator}>
@@ -35,7 +76,7 @@ const Calculator = ({ setOpenModal }) => {
                   </div>
 
                   <div className={style.calculator__range}>
-                    <button>-</button>
+                    <button onClick={() => changePriceWiaButton("-")}>-</button>
                     <div className={style.calculator__range__value}>
                       <p>{new Intl.NumberFormat("ru-RU").format(price)}</p>
                       <Slider
@@ -63,7 +104,7 @@ const Calculator = ({ setOpenModal }) => {
                         }}
                       />
                     </div>
-                    <button>+</button>
+                    <button onClick={() => changePriceWiaButton("+")}>+</button>
                   </div>
 
                   <div className={style.calculator__minmax}>
@@ -76,73 +117,129 @@ const Calculator = ({ setOpenModal }) => {
                   <div className={style.calculator__item__top}>
                     <p>Первоначальный взнос</p>
 
-                    <label className={style.custom__radio}>
-                      <input
-                        type="radio"
-                        name="options"
-                        value="option1"
-                        checked={rublesContribution}
-                        onChange={() => setRublesContribution(true)}
-                      />
-                      <span className={style.radio__button}></span>
-                      <p>в рублях</p>
-                    </label>
+                    <div className={style.calculator__item__top__buttons}>
+                      <label className={style.custom__radio}>
+                        <input
+                          type="radio"
+                          name="options"
+                          value="option1"
+                          checked={rublesContribution}
+                          onChange={() => setRublesContribution(true)}
+                        />
+                        <span className={style.radio__button}></span>
+                        <p>в рублях</p>
+                      </label>
 
-                    <label className={style.custom__radio}>
-                      <input
-                        type="radio"
-                        name="options"
-                        value="option1"
-                        checked={!rublesContribution}
-                        onChange={() => setRublesContribution(false)}
-                      />
-                      <span className={style.radio__button}></span>
-                      <p>в процентах</p>
-                    </label>
-                  </div>
-
-                  <div className={style.calculator__range}>
-                    <button>-</button>
-                    <div className={style.calculator__range__value}>
-                      <p>
-                        {new Intl.NumberFormat("ru-RU").format(contribution)}
-                      </p>
-                      <Slider
-                        value={contribution}
-                        min={600000}
-                        max={2700000}
-                        onChange={(val) => setContribution(val)}
-                        trackStyle={{
-                          backgroundColor: "#E1A356",
-                          height: 5,
-                          marginTop: 5,
-                        }}
-                        handleStyle={{
-                          borderColor: "#E1A356",
-                          height: 15,
-                          width: 15,
-                          backgroundColor: "#E1A356",
-                          marginTop: 0,
-                        }}
-                        railStyle={{
-                          backgroundColor: "#d3d7de",
-                          height: 5,
-                          borderRadius: 0,
-                          marginTop: 5,
-                        }}
-                      />
+                      <label className={style.custom__radio}>
+                        <input
+                          type="radio"
+                          name="options"
+                          value="option1"
+                          checked={!rublesContribution}
+                          onChange={() => setRublesContribution(false)}
+                        />
+                        <span className={style.radio__button}></span>
+                        <p>в процентах</p>
+                      </label>
                     </div>
-                    <button>+</button>
                   </div>
 
-                  <div className={style.calculator__minmax}>
-                    <p>от 600 тыс. ₽</p>
-                    <p>до 2.7 млн. ₽</p>
-                  </div>
+                  {rublesContribution ? (
+                    <div className={style.calculator__range}>
+                      <button onClick={() => changeContributionWiaButton("-")}>
+                        -
+                      </button>
+                      <div className={style.calculator__range__value}>
+                        <p>
+                          {new Intl.NumberFormat("ru-RU").format(contribution)}
+                        </p>
+                        <Slider
+                          value={contribution}
+                          min={600000}
+                          max={2700000}
+                          onChange={(val) => setContribution(val)}
+                          trackStyle={{
+                            backgroundColor: "#E1A356",
+                            height: 5,
+                            marginTop: 5,
+                          }}
+                          handleStyle={{
+                            borderColor: "#E1A356",
+                            height: 15,
+                            width: 15,
+                            backgroundColor: "#E1A356",
+                            marginTop: 0,
+                          }}
+                          railStyle={{
+                            backgroundColor: "#d3d7de",
+                            height: 5,
+                            borderRadius: 0,
+                            marginTop: 5,
+                          }}
+                        />
+                      </div>
+                      <button onClick={() => changeContributionWiaButton("+")}>
+                        +
+                      </button>
+                    </div>
+                  ) : (
+                    <div className={style.calculator__range}>
+                      <button onClick={() => changeContributionWiaButton2("-")}>
+                        -
+                      </button>
+                      <div className={style.calculator__range__value}>
+                        <p>
+                          {new Intl.NumberFormat("ru-RU").format(
+                            contributionProcents
+                          )}{" "}
+                          %
+                        </p>
+                        <Slider
+                          value={contributionProcents}
+                          min={1}
+                          max={100}
+                          onChange={(val) => setContributionProcents(val)}
+                          trackStyle={{
+                            backgroundColor: "#E1A356",
+                            height: 5,
+                            marginTop: 5,
+                          }}
+                          handleStyle={{
+                            borderColor: "#E1A356",
+                            height: 15,
+                            width: 15,
+                            backgroundColor: "#E1A356",
+                            marginTop: 0,
+                          }}
+                          railStyle={{
+                            backgroundColor: "#d3d7de",
+                            height: 5,
+                            borderRadius: 0,
+                            marginTop: 5,
+                          }}
+                        />
+                      </div>
+                      <button onClick={() => changeContributionWiaButton2("+")}>
+                        +
+                      </button>
+                    </div>
+                  )}
+
+                  {rublesContribution ? (
+                    <div className={style.calculator__minmax}>
+                      <p>от 600 тыс. ₽</p>
+                      <p>до 2.7 млн. ₽</p>
+                    </div>
+                  ) : (
+                    <div className={style.calculator__minmax}>
+                      <p>от 1%</p>
+                      <p>до 100%</p>
+                    </div>
+                  )}
                 </li>
 
                 <li>
-                  <div className={style.calculator__item__top}>
+                  <div className={style.calculator__item__top__spec}>
                     <div
                       className={`${style.toggle} ${
                         enabled ? style.toggle__on : ""
@@ -163,7 +260,11 @@ const Calculator = ({ setOpenModal }) => {
                       </div>
 
                       <div className={style.calculator__range}>
-                        <button>-</button>
+                        <button
+                          onClick={() => changeInterestRateWiaButton("-")}
+                        >
+                          -
+                        </button>
                         <div className={style.calculator__range__value}>
                           <p>
                             {new Intl.NumberFormat("ru-RU").format(
@@ -196,7 +297,11 @@ const Calculator = ({ setOpenModal }) => {
                             }}
                           />
                         </div>
-                        <button>+</button>
+                        <button
+                          onClick={() => changeInterestRateWiaButton("+")}
+                        >
+                          +
+                        </button>
                       </div>
 
                       <div className={style.calculator__minmax}>
@@ -211,7 +316,9 @@ const Calculator = ({ setOpenModal }) => {
                       </div>
 
                       <div className={style.calculator__range}>
-                        <button>-</button>
+                        <button onClick={() => changeAgeWiaButton("-")}>
+                          -
+                        </button>
                         <div className={style.calculator__range__value}>
                           <p>{new Intl.NumberFormat("ru-RU").format(age)}</p>
                           <Slider
@@ -239,7 +346,9 @@ const Calculator = ({ setOpenModal }) => {
                             }}
                           />
                         </div>
-                        <button>+</button>
+                        <button onClick={() => changeAgeWiaButton("+")}>
+                          +
+                        </button>
                       </div>
 
                       <div className={style.calculator__minmax}>

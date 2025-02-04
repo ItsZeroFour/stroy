@@ -162,8 +162,8 @@ const Header = () => {
         className={style.header__menu__open}
         style={
           openMenu
-            ? { transform: "translateX(0px)" }
-            : { transform: "translateX(10000px)" }
+            ? { transform: "translateX(0px)", display: "flex" }
+            : { transform: "translateX(10000px)", display: "none" }
         }
       >
         <div className={style.header__menu__wrapper}>

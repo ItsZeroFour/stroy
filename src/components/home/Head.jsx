@@ -6,6 +6,7 @@ import playIcon from "../../assets/icons/home/play.svg";
 import giftIcon from "../../assets/icons/home/gift.svg";
 import { Link } from "react-router-dom";
 import { Motion, spring } from "react-motion";
+import InputMask from "react-input-mask";
 
 const Head = () => {
   return (
@@ -40,7 +41,10 @@ const Head = () => {
             <div className={style.home__info__wrapper}>
               <div className={style.home__form}>
                 <form>
-                  <input type="phone" placeholder="Ваш телефон" />
+                  <InputMask
+                    mask="+7 999 999 99 99"
+                    placeholder="Ваш телефон"
+                  />
                   <input type="text" placeholder="Ваше имя" />
                   <button>
                     Обсудить проект <img src={arrowRight} alt="arrow right" />
