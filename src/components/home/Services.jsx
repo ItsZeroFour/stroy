@@ -7,7 +7,7 @@ import tree from "../../assets/icons/home/tree.svg";
 import { Link } from "react-router-dom";
 import arrowRight from "../../assets/icons/home/arrow-right-2.svg";
 
-const Services = () => {
+const Services = ({ setOpenModal }) => {
   return (
     <section className={style.services}>
       <div className="container">
@@ -47,9 +47,9 @@ const Services = () => {
                 <img src={icon} alt={title} />
                 <h4>{title}</h4>
                 <p>{text}</p>
-                <Link to="#contacts">
+                <button onClick={() => setOpenModal(true)}>
                   Оставить заявку <img src={arrowRight} alt="arrow right" />
-                </Link>
+                </button>
               </li>
             ))}
           </ul>

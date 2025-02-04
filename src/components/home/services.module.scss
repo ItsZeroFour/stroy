@@ -44,9 +44,15 @@
         }
       }
 
-      a {
+      button {
         margin-top: auto;
         color: var(--color-blue);
+        background: none;
+        transition: all .2s ease;
+
+        &:hover {
+          opacity: 0.8;
+        }
 
         @media (max-width: 520px) {
           font-size: 10px;
