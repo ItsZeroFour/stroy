@@ -51,7 +51,7 @@ function App() {
         containerRef={scrollRef}
       > */}
       <div className="page" ref={scrollRef} data-scroll-container>
-        <Header />
+        <Header setOpenModal={setOpenModal} />
 
         <main>
           {openModal && <Modal setOpenModal={setOpenModal} />}

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import style from "./style.module.scss";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ setOpenModal }) => {
   const [openMenu, setOpenMenu] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
 
@@ -146,7 +146,7 @@ const Header = () => {
               <p>Пн - Вс с 8:00 до 18:00</p>
             </div>
 
-            <Link to="#contacts">Оставить заявку</Link>
+            <button onClick={() => setOpenModal(true)}>Оставить заявку</button>
           </div>
 
           <button
@@ -192,7 +192,14 @@ const Header = () => {
           </nav>
 
           <div className={style.header__menu__phone}>
-            <Link to="#contacts">Оставить заявку</Link>
+            <button
+              onClick={() => {
+                setOpenModal(true);
+                setOpenMenu(false);
+              }}
+            >
+              Оставить заявку
+            </button>
             <Link to="tel:+79672123132">+7 967 212 31 32</Link>
             <p>Пн - Вс с 8:00 до 18:00</p>
           </div>

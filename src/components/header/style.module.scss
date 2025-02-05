@@ -87,7 +87,7 @@
     }
   }
 
-  & > a {
+  & > button {
     padding: 12px 25px;
     background: var(--color-white);
     color: var(--color-dark);
@@ -197,7 +197,7 @@
   margin-top: auto;
   margin-bottom: 100px;
 
-  a {
+  button {
     width: 90%;
     padding: 15px;
     background: var(--color-blue);

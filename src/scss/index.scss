@@ -36,12 +36,12 @@ html {
 }
 
 ::-webkit-scrollbar {
-  background: var(--color-white);
-  width: 4px;
+  background: none;
+  width: 0px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-blue);
+  background: none;
 }
 
 .page {

@@ -7,6 +7,11 @@ import Mortgage from "../../components/home/Mortgage";
 import Calculator from "../../components/home/Calculator";
 import Contacts from "../../components/home/Contacts";
 import About from "../../components/home/About";
+import Completed from "../../components/home/Completed";
+import Contacts2 from "../../components/home/Contacts2";
+import WhyWe from "../../components/home/WhyWe";
+import Reviews from "../../components/home/Reviews";
+import Questions from "../../components/home/Questions";
 
 const Home = ({ openModal, setOpenModal }) => {
   return (
@@ -19,6 +24,11 @@ const Home = ({ openModal, setOpenModal }) => {
       <Calculator setOpenModal={setOpenModal} openModal={openModal} />
       <Contacts />
       <About />
+      <Completed />
+      <Contacts2 />
+      <WhyWe />
+      <Reviews />
+      <Questions />
     </React.Fragment>
   );
 };

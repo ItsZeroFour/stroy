@@ -83,6 +83,35 @@ const Contacts = () => {
                 </div>
               </div>
             )}
+
+            <ul>
+              <li>
+                <img src={contactsIcon1} alt="Консультация со специалистом" />
+
+                <div className={style.contacts__text}>
+                  <h5>Консультация со специалистом</h5>
+                  <p>Ответим на все ваши вопросы технического характера</p>
+                </div>
+              </li>
+
+              <li>
+                <img src={contactsIcon2} alt="Консультация со специалистом" />
+
+                <div className={style.contacts__text}>
+                  <h5>Обсуждение ваших идей</h5>
+                  <p>Подскажем, как лучше реализовать ваши идеи</p>
+                </div>
+              </li>
+
+              <li>
+                <img src={contactsIcon3} alt="Консультация со специалистом" />
+
+                <div className={style.contacts__text}>
+                  <h5>Выбор идеального варианта</h5>
+                  <p>Подберем проект под ваш бюджет и ваши требования</p>
+                </div>
+              </li>
+            </ul>
           </aside>
         </div>
       </div>
