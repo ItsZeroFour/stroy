@@ -1,5 +1,9 @@
 .questions {
   margin-top: 140px;
+
+  @media (max-width: 650px) {
+    margin-top: 70px;
+  }
 }
 
 .questions__top {

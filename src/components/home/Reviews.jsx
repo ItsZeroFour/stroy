@@ -53,6 +53,10 @@ const Reviews = () => {
                 <img src={reviewsImg} alt="video preview" />
               </li>
 
+              <li>
+                <img src={reviewsImg} alt="video preview" />
+              </li>
+
               
               <li>
                 <img src={reviewsImg} alt="video preview" />

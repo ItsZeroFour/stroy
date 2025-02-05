@@ -1,4 +1,4 @@
-import { Route, Router, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Home from "./pages/home/Home";
 import Header from "./components/header/Header";
 import Modal from "./components/Modal";
@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import "locomotive-scroll/dist/locomotive-scroll.css";
 import LocomotiveScroll from "locomotive-scroll";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
+import Footer from "./components/footer/Footer";
 
 function App() {
   const [openModal, setOpenModal] = useState(false);
@@ -52,7 +53,6 @@ function App() {
       > */}
       <div className="page" ref={scrollRef} data-scroll-container>
         <Header setOpenModal={setOpenModal} />
-
         <main>
           {openModal && <Modal setOpenModal={setOpenModal} />}
 
@@ -65,6 +65,7 @@ function App() {
             />
           </Routes>
         </main>
+        <Footer />
       </div>
       {/* </LocomotiveScrollProvider> */}
     </div>
