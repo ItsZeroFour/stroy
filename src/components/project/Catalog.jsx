@@ -1,17 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Motion, spring } from "react-motion";
+import style from "./catalog.module.scss";
 import catalogHouse1 from "../../assets/images/home/catalog-1.jpg";
 import catalogHouse2 from "../../assets/images/home/catalog-2.jpg";
 import catalogHouse3 from "../../assets/images/home/catalog-3.jpg";
-import catalogHouse4 from "../../assets/images/home/catalog-4.jpg";
-import catalogHouse5 from "../../assets/images/home/catalog-5.jpg";
-import catalogHouse6 from "../../assets/images/home/catalog-6.jpg";
 import { Link } from "react-router-dom";
 import arrowRight3 from "../../assets/icons/home/arrow-right-3.svg";
 import arrowRight2 from "../../assets/icons/home/arrow-right-2.svg";
-import style from "./completed.module.scss";
 
-const Completed = () => {
+const Catalog = () => {
   const [isVisible, setIsVisible] = useState(false);
   const catalogRef = useRef(null);
 
@@ -19,73 +16,37 @@ const Completed = () => {
     {
       img: catalogHouse1,
       type: "Каменный дом",
-      name: "Дом из керамического блока",
+      name: "SD-1",
       characteristics: {
         square: "101,4 м2",
         rooms_count: 3,
         floors_count: 1,
       },
-      location: "дер. Яранкасы",
+      price: 10000000,
     },
 
     {
       img: catalogHouse2,
       type: "Каменный дом",
-      name: "Кирпичный дом",
+      name: "SD-2",
       characteristics: {
         square: "101,4 м2",
         rooms_count: 3,
         floors_count: 1,
       },
-      location: "дер. Яранкасы",
+      price: 10000000,
     },
 
     {
       img: catalogHouse3,
       type: "Каркасный дом",
-      name: "Каркасный дом",
+      name: "SD-2",
       characteristics: {
         square: "101,4 м2",
         rooms_count: 3,
         floors_count: 1,
       },
-      location: "дер. Яранкасы",
-    },
-
-    {
-      img: catalogHouse4,
-      type: "Каменный дом",
-      name: "Каменный дом",
-      characteristics: {
-        square: "101,4 м2",
-        rooms_count: 3,
-        floors_count: 1,
-      },
-      location: "дер. Яранкасы",
-    },
-
-    {
-      img: catalogHouse5,
-      type: "Каркасный дом",
-      name: "Каркасный дом",
-      characteristics: {
-        square: "101,4 м2",
-        rooms_count: 3,
-        floors_count: 1,
-      },
-      location: "дер. Яранкасы",
-    },
-
-    {
-      img: catalogHouse6,
-      type: "Каменный дом",
-      name: "Каменный дом",
-      characteristics: {
-        square: "101,4 м2",
-        rooms_count: 3,
-        floors_count: 1,
-      },
-      location: "дер. Яранкасы",
+      price: 10000000,
     },
   ];
 
@@ -118,13 +79,12 @@ const Completed = () => {
       <div className="container">
         <div className={style.catalog__wrapper}>
           <div className={style.catalog__top}>
-            <h2>ГОТОВЫЕ ОБЪЕКТЫ</h2>
-            <p>05</p>
+            <h2>ПОСМОТРИТЕ ЕЩЕ</h2>
           </div>
 
           <ul>
             {catalogList.map(
-              ({ img, type, name, characteristics, location }, index) => (
+              ({ img, type, name, characteristics, price }, index) => (
                 <Motion
                   key={index}
                   defaultStyle={{ opacity: 0, transform: 50 }}
@@ -140,14 +100,7 @@ const Completed = () => {
                         transform: `translateY(${style_.transform}px)`,
                       }}
                     >
-                      <div className={style.catalog__image}>
-                        <img src={img} alt={name} />
-
-                        <div className={style.catalog__location}>
-                          <p>{location}</p>
-                        </div>
-                      </div>
-
+                      <img src={img} alt={name} />
                       <div
                         className={style.catalog__item__type}
                         style={
@@ -179,9 +132,11 @@ const Completed = () => {
                       </ul>
 
                       <div className={style.catalog__item__bottom}>
+                        <p>
+                          от {new Intl.NumberFormat("ru-RU").format(price)} ₽
+                        </p>
                         <Link to="/project">
-                          Узнать больше о проекте{" "}
-                          <img src={arrowRight3} alt="Подробнее" />
+                          Подробнее <img src={arrowRight3} alt="Подробнее" />
                         </Link>
                       </div>
                     </li>
@@ -192,8 +147,8 @@ const Completed = () => {
           </ul>
 
           <div className={style.catalog__link}>
-            <Link to="/">
-            Загрузить больше проектов{" "}
+            <Link to="/catalog">
+              Посмотреть весь каталог{" "}
               <img src={arrowRight2} alt="Посмотреть весь каталог" />
             </Link>
           </div>
@@ -203,4 +158,4 @@ const Completed = () => {
   );
 };
 
-export default Completed;
+export default Catalog;

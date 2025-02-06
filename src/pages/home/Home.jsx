@@ -20,7 +20,7 @@ const Home = ({ openModal, setOpenModal }) => {
       <Advantages />
       <Services setOpenModal={setOpenModal} />
       <Catalog />
-      <Mortgage />
+      <Mortgage setOpenModal={setOpenModal} />
       <Calculator setOpenModal={setOpenModal} openModal={openModal} />
       <Contacts />
       <About />

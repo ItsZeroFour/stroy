@@ -123,7 +123,7 @@ const Header = ({ setOpenModal }) => {
               </li>
 
               <li>
-                <Link to="/">Каталог домов</Link>
+                <Link to="/catalog">Каталог домов</Link>
               </li>
 
               <li>

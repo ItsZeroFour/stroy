@@ -14,6 +14,14 @@
   }
 }
 
+.contacts__right__content {
+  width: 480px;
+
+  @media (max-width: 1320px) {
+    width: 100%;
+  }
+}
+
 .footer__form {
   background: var(--color-white);
   padding: 20px;

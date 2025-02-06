@@ -16,7 +16,6 @@ const Mortgage = ({ setOpenModal }) => {
         <div className={style.mortgage__wrapper}>
           <div className={style.mortgage__top}>
             <h2>ИПОТЕКА</h2>
-            <p>03</p>
           </div>
 
           <div className={style.mortgage__main}>

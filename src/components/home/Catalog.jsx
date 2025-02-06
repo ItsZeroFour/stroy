@@ -175,7 +175,7 @@ const Catalog = () => {
                         <p>
                           от {new Intl.NumberFormat("ru-RU").format(price)} ₽
                         </p>
-                        <Link to="/">
+                        <Link to="/project">
                           Подробнее <img src={arrowRight3} alt="Подробнее" />
                         </Link>
                       </div>
@@ -187,7 +187,7 @@ const Catalog = () => {
           </ul>
 
           <div className={style.catalog__link}>
-            <Link to="/">
+            <Link to="/catalog">
               Посмотреть весь каталог{" "}
               <img src={arrowRight2} alt="Посмотреть весь каталог" />
             </Link>

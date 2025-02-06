@@ -7,6 +7,8 @@ import "locomotive-scroll/dist/locomotive-scroll.css";
 import LocomotiveScroll from "locomotive-scroll";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import Footer from "./components/footer/Footer";
+import Catalog from "./pages/catalog/Catalog";
+import Project from "./pages/project/Project";
 
 function App() {
   const [openModal, setOpenModal] = useState(false);
@@ -62,6 +64,14 @@ function App() {
               element={
                 <Home setOpenModal={setOpenModal} openModal={openModal} />
               }
+            />
+            <Route
+              path="/catalog"
+              element={<Catalog setOpenModal={setOpenModal} />}
+            />
+            <Route
+              path="/project"
+              element={<Project setOpenModal={setOpenModal} />}
             />
           </Routes>
         </main>

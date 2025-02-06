@@ -24,10 +24,50 @@
 .header__sticky {
   position: fixed;
   top: 0;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(10px);
+  background: var(--color-white);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  // backdrop-filter: blur(10px);
   animation-name: fromTopToBottom;
   animation-duration: 0.4s;
+
+  nav {
+    color: var(--color-gray);
+  }
+
+  .header__contacts__phone {
+    a {
+      color: var(--color-dark);
+    }
+
+    p {
+      color: var(--color-gray);
+    }
+  }
+
+  .header__contacts {
+    & > button {
+      background: var(--color-blue);
+      color: var(--color-white);
+    }
+  }
+
+  .header__logo {
+    color: var(--color-blue);
+  }
+
+  .header__menu {
+    .header__menu__content {
+      background: var(--color-dark);
+    }
+
+    &::before {
+      background: var(--color-dark);
+    }
+
+    &::after {
+      background: var(--color-dark);
+    }
+  }
 }
 
 .header__wrapper {
