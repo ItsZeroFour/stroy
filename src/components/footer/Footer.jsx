@@ -112,7 +112,7 @@ const Footer = () => {
                 </li>
 
                 <li>
-                  <Link to="/">О нас</Link>
+                  <Link to="/about">О нас</Link>
                 </li>
               </ul>
             </nav>

@@ -9,6 +9,7 @@ import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import Footer from "./components/footer/Footer";
 import Catalog from "./pages/catalog/Catalog";
 import Project from "./pages/project/Project";
+import About from "./pages/about/About";
 
 function App() {
   const [openModal, setOpenModal] = useState(false);
@@ -72,6 +73,10 @@ function App() {
             <Route
               path="/project"
               element={<Project setOpenModal={setOpenModal} />}
+            />
+            <Route
+              path="/about"
+              element={<About setOpenModal={setOpenModal} />}
             />
           </Routes>
         </main>
