@@ -180,27 +180,27 @@ const Header = ({
         <div className={style.header__menu__wrapper}>
           <nav>
             <ul>
-              <li>
+              <li onClick={() => setOpenMenu(!openMenu)}>
                 <Link onClick={scrollToElement2} to="/">
                   Услуги
                 </Link>
               </li>
 
-              <li>
+              <li onClick={() => setOpenMenu(!openMenu)}>
                 <Link to="/catalog">Каталог домов</Link>
               </li>
 
-              <li>
+              <li onClick={() => setOpenMenu(!openMenu)}>
                 <Link to="/" onClick={scrollToElement3}>
                   Ипотека
                 </Link>
               </li>
 
-              <li>
+              <li onClick={() => setOpenMenu(!openMenu)}>
                 <Link to="/about">О нас</Link>
               </li>
 
-              <li>
+              <li onClick={() => setOpenMenu(!openMenu)}>
                 <Link to="/" onClick={scrollToElement}>
                   Контакты
                 </Link>
