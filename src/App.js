@@ -11,6 +11,7 @@ import Catalog from "./pages/catalog/Catalog";
 import Project from "./pages/project/Project";
 import About from "./pages/about/About";
 import ScrollToTop from "./utils/ScrollToTop";
+import NotFound from "./pages/not_found/NotFound";
 
 function App() {
   const [openModal, setOpenModal] = useState(false);
@@ -109,6 +110,7 @@ function App() {
               path="/about"
               element={<About setOpenModal={setOpenModal} />}
             />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />
