@@ -7,9 +7,9 @@ import tree from "../../assets/icons/home/tree.svg";
 import { Link } from "react-router-dom";
 import arrowRight from "../../assets/icons/home/arrow-right-2.svg";
 
-const Services = ({ setOpenModal }) => {
+const Services = ({ setOpenModal, targetRef2 }) => {
   return (
-    <section className={style.services}>
+    <section className={style.services} ref={targetRef2}>
       <div className="container">
         <div className={style.services__wrapper}>
           <div className={style.services__top}>

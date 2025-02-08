@@ -8,11 +8,11 @@ import arrowRight from "../../assets/icons/home/arrow-right-3.svg";
 import { Link } from "react-router-dom";
 import okey from "../../assets/icons/home/okey.svg";
 
-const Contacts = () => {
+const Contacts = ({ targetRef }) => {
   const [isSuccess, setIsSuccess] = useState(false);
 
   return (
-    <section className={style.contacts}>
+    <section className={style.contacts} ref={targetRef} id="contacts">
       <div className="container">
         <div className={style.contacts__wrapper}>
           <aside className={style.contacts__left}>

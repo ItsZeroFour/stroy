@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./head.module.scss";
 import locationIcon from "../../assets/icons/home/location.svg";
 import arrowRight from "../../assets/icons/home/arrow-right.svg";
@@ -7,8 +7,27 @@ import giftIcon from "../../assets/icons/home/gift.svg";
 import { Link } from "react-router-dom";
 import { Motion, spring } from "react-motion";
 import InputMask from "react-input-mask";
+import Video2 from "../Video2";
 
 const Head = () => {
+  const [openVideo, setOpenVideo] = useState(false);
+
+  useEffect(() => {
+    if (openVideo) {
+      const preventScroll = (event) => event.preventDefault();
+
+      window.addEventListener("wheel", preventScroll, { passive: false });
+      window.addEventListener("touchmove", preventScroll, { passive: false });
+      document.body.style.overflowY = "hidden";
+
+      return () => {
+        window.removeEventListener("wheel", preventScroll);
+        window.removeEventListener("touchmove", preventScroll);
+        document.body.style.overflowY = "auto";
+      };
+    }
+  }, [openVideo]);
+
   return (
     <section className={style.home}>
       <div className="container">
@@ -53,7 +72,7 @@ const Head = () => {
               </div>
 
               <div className={style.home__video}>
-                <button>
+                <button onClick={() => setOpenVideo(true)}>
                   <div className={style.home__video__button__container}>
                     <img src={playIcon} alt="play icon" />
                   </div>
@@ -81,7 +100,7 @@ const Head = () => {
           </div>
 
           <div className={`${style.home__video} ${style.home__video__2}`}>
-            <button>
+            <button onClick={() => setOpenVideo(true)}>
               <div className={style.home__video__button__container}>
                 <img src={playIcon} alt="play icon" />
               </div>
@@ -92,6 +111,7 @@ const Head = () => {
               <p>Узнайте больше о нашей компании</p>
             </div>
           </div>
+          {openVideo && <Video2 setOpenVideo={setOpenVideo} />}
         </div>
       </div>
     </section>

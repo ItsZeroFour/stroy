@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import style from "./calculator.module.scss";
 import calculator from "../../assets/icons/home/Calculator.svg";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 
-const Calculator = ({ setOpenModal }) => {
+const Calculator = ({ setOpenModal, targetRef3 }) => {
   const [price, setPrice] = useState(6000000);
   const [contribution, setContribution] = useState(600000);
   const [contributionProcents, setContributionProcents] = useState(1);
@@ -12,6 +12,30 @@ const Calculator = ({ setOpenModal }) => {
   const [enabled, setEnabled] = useState(false);
   const [interestRate, setInterestRate] = useState(14);
   const [age, setAge] = useState(10);
+
+  const [loanAmount, setLoanAmount] = useState(0);
+  const [monthlyPayment, setMonthlyPayment] = useState(0);
+  const [totalPayment, setTotalPayment] = useState(0);
+  const [overpayment, setOverpayment] = useState(0);
+
+  useEffect(() => {
+    const calculateLoan = () => {
+      const principal = rublesContribution ? price - contribution : price - (price * contributionProcents / 100);
+      const monthlyInterestRate = interestRate / 100 / 12;
+      const numberOfPayments = age * 12;
+
+      const monthly = (principal * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -numberOfPayments));
+      const total = monthly * numberOfPayments;
+      const overpay = total - principal;
+
+      setLoanAmount(principal);
+      setMonthlyPayment(monthly);
+      setTotalPayment(total);
+      setOverpayment(overpay);
+    };
+
+    calculateLoan();
+  }, [price, contribution, contributionProcents, rublesContribution, interestRate, age]);
 
   const changePriceWiaButton = (appearance) => {
     if (appearance === "-") {
@@ -54,7 +78,7 @@ const Calculator = ({ setOpenModal }) => {
   };
 
   return (
-    <section className={style.calculator}>
+    <section className={style.calculator} ref={targetRef3}>
       <div className="container">
         <div className={style.calculator__wrapper}>
           <div className={style.calculator__top}>
@@ -364,24 +388,24 @@ const Calculator = ({ setOpenModal }) => {
               <div className={style.calculator__right__elem}>
                 <div className={style.calculator__right__item}>
                   <p>Сумма кредита</p>
-                  <h3>000 000 000, 000 ₽</h3>
+                  <h3>{new Intl.NumberFormat("ru-RU").format(loanAmount)} ₽</h3>
                 </div>
 
                 <div className={style.calculator__right__item}>
                   <p>Процентная ставка</p>
-                  <h3>00%</h3>
+                  <h3>{interestRate}%</h3>
                 </div>
               </div>
               <div className={style.calculator__right__elem}>
                 <div className={style.calculator__right__item}>
                   <p>Ежемесячный платеж</p>
-                  <h3>000 000 000, 000 ₽</h3>
+                  <h3>{new Intl.NumberFormat("ru-RU").format(monthlyPayment)} ₽</h3>
                 </div>
 
                 <div className={style.calculator__right__item}>
                   <p>Срок</p>
                   <h3 className={style.calculator__right__item__spec}>
-                    000 лет 00 мес
+                    {Math.floor(age)} лет {Math.round((age - Math.floor(age)) * 12)} мес
                   </h3>
                 </div>
               </div>
@@ -389,14 +413,14 @@ const Calculator = ({ setOpenModal }) => {
                 <div className={style.calculator__right__item}>
                   <p>Всего к выплате (долг + проценты)</p>
                   <h3 className={style.calculator__right__item__spec}>
-                    000 000 000, 000 ₽
+                    {new Intl.NumberFormat("ru-RU").format(totalPayment)} ₽
                   </h3>
                 </div>
 
                 <div className={style.calculator__right__item}>
                   <p>Сумма переплаты (проценты)</p>
                   <h3 className={style.calculator__right__item__spec}>
-                    000 000 000, 000 ₽
+                    {new Intl.NumberFormat("ru-RU").format(overpayment)} ₽
                   </h3>
                 </div>
               </div>

@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import style from "./style.module.scss";
 import { Link } from "react-router-dom";
 
-const Header = ({ setOpenModal }) => {
+const Header = ({
+  setOpenModal,
+  scrollToElement,
+  scrollToElement2,
+  scrollToElement3,
+}) => {
   const [openMenu, setOpenMenu] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
 
@@ -119,7 +124,9 @@ const Header = ({ setOpenModal }) => {
           <nav>
             <ul>
               <li>
-                <Link to="/">Услуги</Link>
+                <Link onClick={scrollToElement2} to="/">
+                  Услуги
+                </Link>
               </li>
 
               <li>
@@ -127,7 +134,9 @@ const Header = ({ setOpenModal }) => {
               </li>
 
               <li>
-                <Link to="/">Ипотека</Link>
+                <Link to="/" onClick={scrollToElement3}>
+                  Ипотека
+                </Link>
               </li>
 
               <li>
@@ -135,7 +144,9 @@ const Header = ({ setOpenModal }) => {
               </li>
 
               <li>
-                <Link to="/">Контакты</Link>
+                <Link to="/" onClick={scrollToElement}>
+                  Контакты
+                </Link>
               </li>
             </ul>
           </nav>
@@ -170,23 +181,29 @@ const Header = ({ setOpenModal }) => {
           <nav>
             <ul>
               <li>
-                <Link to="/">Услуги</Link>
+                <Link onClick={scrollToElement2} to="/">
+                  Услуги
+                </Link>
               </li>
 
               <li>
-                <Link to="/">Каталог домов</Link>
+                <Link to="/catalog">Каталог домов</Link>
               </li>
 
               <li>
-                <Link to="/">Ипотека</Link>
+                <Link to="/" onClick={scrollToElement3}>
+                  Ипотека
+                </Link>
               </li>
 
               <li>
-                <Link to="/">О нас</Link>
+                <Link to="/about">О нас</Link>
               </li>
 
               <li>
-                <Link to="/">Контакты</Link>
+                <Link to="/" onClick={scrollToElement}>
+                  Контакты
+                </Link>
               </li>
             </ul>
           </nav>

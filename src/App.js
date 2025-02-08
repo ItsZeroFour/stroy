@@ -10,10 +10,29 @@ import Footer from "./components/footer/Footer";
 import Catalog from "./pages/catalog/Catalog";
 import Project from "./pages/project/Project";
 import About from "./pages/about/About";
+import ScrollToTop from "./utils/ScrollToTop";
 
 function App() {
   const [openModal, setOpenModal] = useState(false);
   const scrollRef = useRef(null);
+
+  const targetRef = useRef(null);
+
+  const scrollToElement = () => {
+    targetRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const targetRef2 = useRef(null);
+
+  const scrollToElement2 = () => {
+    targetRef2.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const targetRef3 = useRef(null);
+
+  const scrollToElement3 = () => {
+    targetRef3.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   /* Disable scroll */
   useEffect(() => {
@@ -55,7 +74,13 @@ function App() {
         containerRef={scrollRef}
       > */}
       <div className="page" ref={scrollRef} data-scroll-container>
-        <Header setOpenModal={setOpenModal} />
+        <ScrollToTop />
+        <Header
+          setOpenModal={setOpenModal}
+          scrollToElement={scrollToElement}
+          scrollToElement2={scrollToElement2}
+          scrollToElement3={scrollToElement3}
+        />
         <main>
           {openModal && <Modal setOpenModal={setOpenModal} />}
 
@@ -63,7 +88,13 @@ function App() {
             <Route
               path="/"
               element={
-                <Home setOpenModal={setOpenModal} openModal={openModal} />
+                <Home
+                  setOpenModal={setOpenModal}
+                  openModal={openModal}
+                  targetRef={targetRef}
+                  targetRef2={targetRef2}
+                  targetRef3={targetRef3}
+                />
               }
             />
             <Route

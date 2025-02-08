@@ -294,9 +294,14 @@
       gap: 40px;
 
       .calculator__right__item {
+        width: 260px;
         display: flex;
         flex-direction: column;
         gap: 5px;
+
+        @media (max-width: 460px) {
+          width: 100%;
+        }
 
         p {
           color: var(--color-gray-secondary);

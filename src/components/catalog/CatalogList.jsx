@@ -21,11 +21,18 @@ const CatalogList = () => {
   const [selectedOption, setSelectedOption] = useState("По умолчанию");
   const [selectedOption2, setSelectedOption2] = useState("Все дома");
   const [openFilter, setOpenFilter] = useState(false);
-  const catalogRef = useRef(null);
-  const dropdownRef = useRef(null);
-  const dropdownRef2 = useRef(null);
-
-  const catalogList = [
+  const [filterValues, setFilterValues] = useState({
+    type: "Все дома",
+    priceFrom: "",
+    priceTo: "",
+    squareFrom: "",
+    squareTo: "",
+    roomsFrom: "",
+    roomsTo: "",
+    floorsFrom: "",
+    floorsTo: "",
+  });
+  const [catalogList, setCatalogList] = useState([
     {
       img: catalogHouse1,
       type: "Каменный дом",
@@ -35,7 +42,7 @@ const CatalogList = () => {
         rooms_count: 3,
         floors_count: 1,
       },
-      price: 10000000,
+      price: 999999,
     },
 
     {
@@ -92,7 +99,7 @@ const CatalogList = () => {
       name: "SD-4",
       characteristics: {
         square: "101,4 м2",
-        rooms_count: 3,
+        rooms_count: 6,
         floors_count: 1,
       },
       price: 10000000,
@@ -104,7 +111,7 @@ const CatalogList = () => {
       name: "SD-1",
       characteristics: {
         square: "101,4 м2",
-        rooms_count: 3,
+        rooms_count: 5,
         floors_count: 1,
       },
       price: 10000000,
@@ -133,7 +140,11 @@ const CatalogList = () => {
       },
       price: 10000000,
     },
-  ];
+  ]);
+  const [originalCatalogList] = useState([...catalogList]);
+  const catalogRef = useRef(null);
+  const dropdownRef = useRef(null);
+  const dropdownRef2 = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -166,6 +177,15 @@ const CatalogList = () => {
   const handleOptionClick = (option) => {
     setSelectedOption(option);
     setIsDropdownOpen(false);
+    if (option === "По возрастанию") {
+      setCatalogList((prevList) =>
+        [...prevList].sort((a, b) => a.price - b.price)
+      );
+    } else if (option === "По убыванию") {
+      setCatalogList((prevList) =>
+        [...prevList].sort((a, b) => b.price - a.price)
+      );
+    }
   };
 
   const handleClickOutside = (event) => {
@@ -181,12 +201,88 @@ const CatalogList = () => {
   const handleOptionClick2 = (option) => {
     setSelectedOption2(option);
     setIsDropdownOpen2(false);
+    setFilterValues((prevValues) => ({
+      ...prevValues,
+      type: option,
+    }));
   };
 
   const handleClickOutside2 = (event) => {
     if (dropdownRef2.current && !dropdownRef2.current.contains(event.target)) {
       setIsDropdownOpen2(false);
     }
+  };
+
+  const handleFilterChange = (e) => {
+    const { name, value } = e.target;
+    setFilterValues((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
+  };
+
+  const handleReset = () => {
+    setFilterValues({
+      type: "Все дома",
+      priceFrom: "",
+      priceTo: "",
+      squareFrom: "",
+      squareTo: "",
+      roomsFrom: "",
+      roomsTo: "",
+      floorsFrom: "",
+      floorsTo: "",
+    });
+    setCatalogList(originalCatalogList);
+    setOpenFilter(false);
+  };
+
+  const handleSearch = () => {
+    setCatalogList(
+      originalCatalogList.filter((item) => {
+        const price = item.price;
+        const square = parseFloat(
+          item.characteristics.square.replace(",", ".")
+        );
+        const rooms = item.characteristics.rooms_count;
+        const floors = item.characteristics.floors_count;
+
+        return (
+          (filterValues.type === "Все дома" ||
+            item.type === filterValues.type) &&
+          (filterValues.priceFrom === "" || price >= filterValues.priceFrom) &&
+          (filterValues.priceTo === "" || price <= filterValues.priceTo) &&
+          (filterValues.squareFrom === "" ||
+            square >= filterValues.squareFrom) &&
+          (filterValues.squareTo === "" || square <= filterValues.squareTo) &&
+          (filterValues.roomsFrom === "" || rooms >= filterValues.roomsFrom) &&
+          (filterValues.roomsTo === "" || rooms <= filterValues.roomsTo) &&
+          (filterValues.floorsFrom === "" ||
+            floors >= filterValues.floorsFrom) &&
+          (filterValues.floorsTo === "" || floors <= filterValues.floorsTo)
+        );
+      })
+    );
+    setOpenFilter(false);
+  };
+
+  const handleRemoveFilter = (filterName) => {
+    setFilterValues((prevValues) => ({
+      ...prevValues,
+      [filterName]: "",
+      ...(filterName === "priceFrom" || filterName === "priceTo"
+        ? { priceFrom: "", priceTo: "" }
+        : {}),
+      ...(filterName === "squareFrom" || filterName === "squareTo"
+        ? { squareFrom: "", squareTo: "" }
+        : {}),
+      ...(filterName === "roomsFrom" || filterName === "roomsTo"
+        ? { roomsFrom: "", roomsTo: "" }
+        : {}),
+      ...(filterName === "floorsFrom" || filterName === "floorsTo"
+        ? { floorsFrom: "", floorsTo: "" }
+        : {}),
+    }));
   };
 
   useEffect(() => {
@@ -212,6 +308,21 @@ const CatalogList = () => {
       document.removeEventListener("mousedown", handleClickOutside2);
     };
   }, [isDropdownOpen2]);
+
+  useEffect(() => {
+    // Обновление списка фильтров при сбросе
+    if (filterValues.type === "Все дома" &&
+        filterValues.priceFrom === "" &&
+        filterValues.priceTo === "" &&
+        filterValues.squareFrom === "" &&
+        filterValues.squareTo === "" &&
+        filterValues.roomsFrom === "" &&
+        filterValues.roomsTo === "" &&
+        filterValues.floorsFrom === "" &&
+        filterValues.floorsTo === "") {
+      setCatalogList(originalCatalogList);
+    }
+  }, [filterValues]);
 
   return (
     <section className={style.catalog} ref={catalogRef}>
@@ -312,8 +423,20 @@ const CatalogList = () => {
                           <p>Цена, ₽</p>
 
                           <div className={style.catalog__top__filter__inputs}>
-                            <input type="number" placeholder="от" />
-                            <input type="number" placeholder="до" />
+                            <input
+                              type="number"
+                              placeholder="от"
+                              name="priceFrom"
+                              value={filterValues.priceFrom}
+                              onChange={handleFilterChange}
+                            />
+                            <input
+                              type="number"
+                              placeholder="до"
+                              name="priceTo"
+                              value={filterValues.priceTo}
+                              onChange={handleFilterChange}
+                            />
                           </div>
                         </li>
 
@@ -321,8 +444,20 @@ const CatalogList = () => {
                           <p>Площадь, м2</p>
 
                           <div className={style.catalog__top__filter__inputs}>
-                            <input type="number" placeholder="от" />
-                            <input type="number" placeholder="до" />
+                            <input
+                              type="number"
+                              placeholder="от"
+                              name="squareFrom"
+                              value={filterValues.squareFrom}
+                              onChange={handleFilterChange}
+                            />
+                            <input
+                              type="number"
+                              placeholder="до"
+                              name="squareTo"
+                              value={filterValues.squareTo}
+                              onChange={handleFilterChange}
+                            />
                           </div>
                         </li>
 
@@ -330,8 +465,20 @@ const CatalogList = () => {
                           <p>Количество комнат</p>
 
                           <div className={style.catalog__top__filter__inputs}>
-                            <input type="number" placeholder="от" />
-                            <input type="number" placeholder="до" />
+                            <input
+                              type="number"
+                              placeholder="от"
+                              name="roomsFrom"
+                              value={filterValues.roomsFrom}
+                              onChange={handleFilterChange}
+                            />
+                            <input
+                              type="number"
+                              placeholder="до"
+                              name="roomsTo"
+                              value={filterValues.roomsTo}
+                              onChange={handleFilterChange}
+                            />
                           </div>
                         </li>
 
@@ -339,20 +486,75 @@ const CatalogList = () => {
                           <p>Количество этажей</p>
 
                           <div className={style.catalog__top__filter__inputs}>
-                            <input type="number" placeholder="от" />
-                            <input type="number" placeholder="до" />
+                            <input
+                              type="number"
+                              placeholder="от"
+                              name="floorsFrom"
+                              value={filterValues.floorsFrom}
+                              onChange={handleFilterChange}
+                            />
+                            <input
+                              type="number"
+                              placeholder="до"
+                              name="floorsTo"
+                              value={filterValues.floorsTo}
+                              onChange={handleFilterChange}
+                            />
                           </div>
                         </li>
                       </ul>
 
                       <div className={style.catalog__top__filter__buttons}>
-                        <button>Сбросить</button>
-                        <button>Поиск</button>
+                        <button onClick={handleReset}>Сбросить</button>
+                        <button onClick={handleSearch}>Поиск</button>
                       </div>
                     </div>
                   </div>
                 )}
               </div>
+
+              <ul className={style.catalog__filter__list}>
+                {filterValues.type !== "Все дома" && (
+                  <li>
+                    {filterValues.type}
+                    <button onClick={() => handleRemoveFilter("type")}>
+                      <img src={xMark} alt="x mark" />
+                    </button>
+                  </li>
+                )}
+                {(filterValues.priceFrom || filterValues.priceTo) && (
+                  <li>
+                    Цена: {filterValues.priceFrom && `от ${new Intl.NumberFormat("ru-RU").format(filterValues.priceFrom)} ₽`} {filterValues.priceTo && `до ${new Intl.NumberFormat("ru-RU").format(filterValues.priceTo)} ₽`}
+                    <button onClick={() => handleRemoveFilter("priceFrom")}>
+                      <img src={xMark} alt="x mark" />
+                    </button>
+                  </li>
+                )}
+                {(filterValues.squareFrom || filterValues.squareTo) && (
+                  <li>
+                    Площадь: {filterValues.squareFrom && `от ${filterValues.squareFrom} м2`} {filterValues.squareTo && `до ${filterValues.squareTo} м2`}
+                    <button onClick={() => handleRemoveFilter("squareFrom")}>
+                      <img src={xMark} alt="x mark" />
+                    </button>
+                  </li>
+                )}
+                {(filterValues.roomsFrom || filterValues.roomsTo) && (
+                  <li>
+                    Количество комнат: {filterValues.roomsFrom && `от ${filterValues.roomsFrom}`} {filterValues.roomsTo && `до ${filterValues.roomsTo}`}
+                    <button onClick={() => handleRemoveFilter("roomsFrom")}>
+                      <img src={xMark} alt="x mark" />
+                    </button>
+                  </li>
+                )}
+                {(filterValues.floorsFrom || filterValues.floorsTo) && (
+                  <li>
+                    Количество этажей: {filterValues.floorsFrom && `от ${filterValues.floorsFrom}`} {filterValues.floorsTo && `до ${filterValues.floorsTo}`}
+                    <button onClick={() => handleRemoveFilter("floorsFrom")}>
+                      <img src={xMark} alt="x mark" />
+                    </button>
+                  </li>
+                )}
+              </ul>
             </div>
 
             <p>
@@ -421,6 +623,13 @@ const CatalogList = () => {
                   )}
                 </Motion>
               )
+            )}
+
+            {catalogList.length === 0 && (
+              <div className={style.catalog__not_found}>
+                <h4>Ничего не найдено</h4>
+                <p>К сожалению, по вашему запросу ничего не найдено</p>
+              </div>
             )}
           </ul>
         </div>

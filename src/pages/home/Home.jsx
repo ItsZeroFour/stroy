@@ -13,16 +13,16 @@ import WhyWe from "../../components/home/WhyWe";
 import Reviews from "../../components/home/Reviews";
 import Questions from "../../components/home/Questions";
 
-const Home = ({ openModal, setOpenModal }) => {
+const Home = ({ openModal, setOpenModal, targetRef, targetRef2, targetRef3 }) => {
   return (
     <React.Fragment>
       <Head />
       <Advantages />
-      <Services setOpenModal={setOpenModal} />
+      <Services setOpenModal={setOpenModal} targetRef2={targetRef2} />
       <Catalog />
       <Mortgage setOpenModal={setOpenModal} />
-      <Calculator setOpenModal={setOpenModal} openModal={openModal} />
-      <Contacts />
+      <Calculator setOpenModal={setOpenModal} openModal={openModal} targetRef3={targetRef3} />
+      <Contacts targetRef={targetRef} />
       <About />
       <Completed />
       <Contacts2 />
