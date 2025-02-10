@@ -33,32 +33,32 @@ const Reviews = () => {
             </div>
 
             <ul>
-              <li>
+              <li onClick={() => setOpenVideo(true)}>
                 <img src={reviewsImg} alt="video preview" />
               </li>
 
-              <li>
+              <li onClick={() => setOpenVideo(true)}>
                 <img src={reviewsImg} alt="video preview" />
               </li>
 
-              <li>
+              <li onClick={() => setOpenVideo(true)}>
                 <img src={reviewsImg} alt="video preview" />
               </li>
 
-              <li>
+              <li onClick={() => setOpenVideo(true)}>
                 <img src={reviewsImg} alt="video preview" />
               </li>
 
-              <li>
+              <li onClick={() => setOpenVideo(true)}>
                 <img src={reviewsImg} alt="video preview" />
               </li>
 
-              <li>
+              <li onClick={() => setOpenVideo(true)}>
                 <img src={reviewsImg} alt="video preview" />
               </li>
 
               
-              <li>
+              <li onClick={() => setOpenVideo(true)}>
                 <img src={reviewsImg} alt="video preview" />
               </li>
             </ul>

@@ -84,6 +84,10 @@ textarea {
   font-family: "Montserrat-md", sans-serif;
   font-size: 14px;
   color: inherit;
+
+  @media (max-width: 476px) {
+    font-size: 12px;
+  }
 }
 
 button {

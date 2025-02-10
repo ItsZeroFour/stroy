@@ -135,11 +135,12 @@
 .catalog__top {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  // align-items: center;
 
   & > p {
     color: var(--color-gray-secondary);
     font-size: 12px;
+    width: 165px;
 
     @media (max-width: 430px) {
       order: 0;
@@ -147,7 +148,21 @@
     }
   }
 
-  div {
+  & > div {
+    display: flex;
+    gap: 20px;
+
+    @media (max-width: 1250px) {
+      flex-direction: column;
+    }
+
+    @media (max-width: 430px) {
+      order: 1;
+      width: 100%;
+    }
+  }
+
+  & > div > div {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -157,7 +172,25 @@
     }
 
     @media (max-width: 430px) {
-      order: 1;
+      width: 100%;
+    }
+
+    .catalog__top__select {
+      @media (max-width: 430px) {
+        order: 1;
+        width: 100%;
+
+        .catalog__top__select__main {
+          width: 100%;
+          justify-content: space-between;
+        }
+      }
+    }
+
+    .catalog__top__filter {
+      @media (max-width: 430px) {
+        order: 0;
+      }
     }
   }
 
@@ -165,6 +198,14 @@
     flex-direction: column;
     justify-content: start;
     align-items: start;
+  }
+}
+
+.catalog__top__select__main {
+  div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
   }
 }
 
@@ -197,11 +238,17 @@
   }
 }
 
+.catalog__top__filter__wrapper {
+  .catalog__top__select {
+    margin-left: 0;
+  }
+}
+
 .catalog__top__select__main,
 .catalog__top__filter__main {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 5px !important;
 
   cursor: pointer;
 
@@ -211,6 +258,7 @@
   border-radius: 7px;
 
   border: 1px solid var(--color-gray-tertiary);
+  color: var(--color-gray);
 }
 
 .catalog__top__filter__content {
@@ -228,6 +276,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 478px) {
+    padding: 10px;
+  }
 }
 
 @keyframes fadeIn {
@@ -337,6 +389,10 @@
       }
     }
   }
+
+  @media (max-width: 478px) {
+    width: 100%;
+  }
 }
 
 .catalog__not_found {
@@ -390,7 +446,9 @@
 .catalog__filter__list {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 0 20px;
+
+  width: 70%;
 
   font-size: 12px;
   color: var(--color-gray);
@@ -405,5 +463,10 @@
     display: flex;
     align-items: center;
     gap: 5px;
+  }
+
+  @media (max-width: 1250px) {
+    width: 100%;
+    order: 5;
   }
 }

@@ -33,7 +33,7 @@ const Head = () => {
       <div className="container">
         <div className={style.home__wrapper}>
           <div className={style.home__location}>
-            <img src={locationIcon} alt="location" />
+            <img src={locationIcon} loading="lazy" alt="location" />
             <p>В РЕСПУБЛИКЕ ЧУВАШИЯ</p>
           </div>
 
@@ -66,15 +66,21 @@ const Head = () => {
                   />
                   <input type="text" placeholder="Ваше имя" />
                   <button>
-                    Обсудить проект <img src={arrowRight} alt="arrow right" />
+                    Обсудить проект{" "}
+                    <img src={arrowRight} loading="lazy" alt="arrow right" />
                   </button>
                 </form>
+
+                <p>
+                  Нажимая кнопку “Обсудить проект”, вы соглашаетесь с{" "}
+                  <Link to="/">Политикой конфиденциальности</Link>
+                </p>
               </div>
 
               <div className={style.home__video}>
                 <button onClick={() => setOpenVideo(true)}>
                   <div className={style.home__video__button__container}>
-                    <img src={playIcon} alt="play icon" />
+                    <img src={playIcon} loading="lazy" alt="play icon" />
                   </div>
                 </button>
 
@@ -92,7 +98,7 @@ const Head = () => {
           </div>
 
           <div className={style.home__gift}>
-            <img src={giftIcon} alt="gift" />
+            <img src={giftIcon} loading="lazy" alt="gift" />
             <p>
               При заключении договора до 31 декабря 2024 года ФУНДАМЕНТ В
               ПОДАРОК
@@ -102,7 +108,7 @@ const Head = () => {
           <div className={`${style.home__video} ${style.home__video__2}`}>
             <button onClick={() => setOpenVideo(true)}>
               <div className={style.home__video__button__container}>
-                <img src={playIcon} alt="play icon" />
+                <img src={playIcon} loading="lazy" alt="play icon" />
               </div>
             </button>
 

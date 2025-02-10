@@ -5,6 +5,7 @@ import arrowRight from "../../assets/icons/home/arrow-right-3.svg";
 import { Link } from "react-router-dom";
 import okey from "../../assets/icons/home/okey.svg";
 import logo from "../../assets/footer_logo.svg";
+import logo2 from "../../assets/footer_logo_2.svg";
 import vk from "../../assets/icons/footer/vk.svg";
 import instagram from "../../assets/icons/footer/instagram.svg";
 import youtube from "../../assets/icons/footer/youtube.svg";
@@ -85,11 +86,91 @@ const Footer = () => {
             </div>
           </div>
 
+          <div
+            className={`${style.footer__socials__right} ${style.footer__socials__right__mobile}`}
+          >
+            <h3>МЫ В СОЦСЕТЯХ</h3>
+
+            <ul>
+              <li>
+                <Link to="#">
+                  <img src={vk} alt="vk" />
+                  <p>ВКонтакте</p>
+                </Link>
+              </li>
+
+              <li>
+                <Link to="#">
+                  <img src={instagram} alt="instagram" />
+                  <p>Instagram*</p>
+                </Link>
+              </li>
+
+              <li>
+                <Link to="#">
+                  <img src={youtube} alt="youtube" />
+                  <p>YouTube</p>
+                </Link>
+              </li>
+
+              <li>
+                <Link to="#">
+                  <img src={tg} alt="tg" />
+                  <p>Telegram</p>
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {!isSuccess ? (
+            <div
+              className={`${style.footer__form} ${style.footer__form_mobile}`}
+            >
+              <h3>ЗАПОЛНИТЕ ФОРМУ ЗАЯВКИ </h3>
+              <p>и мы вам перезвоним для обсуждения проекта</p>
+
+              <form>
+                <InputMask mask="+7 999 999 99 99" placeholder="Ваш телефон" />
+
+                <input type="text" placeholder="Ваше имя" />
+                <button type="button" onClick={() => setIsSuccess(true)}>
+                  Оставить заявку <img src={arrowRight} alt="arrow right" />
+                </button>
+              </form>
+
+              <p className={style.contacts__policy}>
+                Нажимая кнопку “Оставить заявку”, вы соглашаетесь с{" "}
+                <Link to="/">Политикой конфиденциальности</Link>{" "}
+              </p>
+            </div>
+          ) : (
+            <div
+              className={`${style.footer__form} ${style.footer__form_mobile}`}
+            >
+              <div className={style.contacts__right__content}>
+                <div className={style.modal__success}>
+                  <img src={okey} alt="okey" />
+                  <h3>ЗАЯВКА ОТПРАВЛЕНА</h3>
+                  <p>
+                    Мы уже получили вашу заявку и перезвоним вам через несколько
+                    минут
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
           <div className={style.footer__socials}>
             <div className={style.footer__socials__left}>
-              <Link to="/">
-                <img src={logo} alt="logo" />
-              </Link>
+              <div className={style.footer__socials__left__logo}>
+                <Link to="/">
+                  <img src={logo} alt="logo" />
+                </Link>
+
+                <Link to="/">
+                  <img src={logo2} alt="logo" />
+                </Link>
+              </div>
 
               <div className={style.footer__socials__left__info}>
                 <p>ИП Степанов Денис Сергеевич ИНН 212306083987</p>
@@ -122,23 +203,31 @@ const Footer = () => {
 
               <ul>
                 <li>
-                  <img src={vk} alt="vk" />
-                  <p>ВКонтакте</p>
+                  <Link to="#">
+                    <img src={vk} alt="vk" />
+                    <p>ВКонтакте</p>
+                  </Link>
                 </li>
 
                 <li>
-                  <img src={instagram} alt="instagram" />
-                  <p>Instagram*</p>
+                  <Link to="#">
+                    <img src={instagram} alt="instagram" />
+                    <p>Instagram*</p>
+                  </Link>
                 </li>
 
                 <li>
-                  <img src={youtube} alt="youtube" />
-                  <p>YouTube</p>
+                  <Link to="#">
+                    <img src={youtube} alt="youtube" />
+                    <p>YouTube</p>
+                  </Link>
                 </li>
 
                 <li>
-                  <img src={tg} alt="tg" />
-                  <p>Telegram</p>
+                  <Link to="#">
+                    <img src={tg} alt="tg" />
+                    <p>Telegram</p>
+                  </Link>
                 </li>
               </ul>
             </div>

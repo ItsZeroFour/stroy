@@ -27,6 +27,9 @@
 
       h4 {
         margin-top: 20px;
+        font-family: "Unbounded", sans-serif;
+        font-weight: 400;
+        font-size: 16px;
 
         @media (max-width: 520px) {
           font-size: 12px;
@@ -48,7 +51,7 @@
         margin-top: auto;
         color: var(--color-blue);
         background: none;
-        transition: all .2s ease;
+        transition: all 0.2s ease;
 
         &:hover {
           opacity: 0.8;
@@ -103,5 +106,9 @@
     @media (max-width: 1020px) {
       font-size: 18px;
     }
+  }
+
+  @media (max-width: 1020px) {
+    padding: 0 0 15px 0;
   }
 }

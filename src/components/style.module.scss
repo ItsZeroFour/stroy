@@ -218,13 +218,13 @@
 }
 
 .video__close {
-  width: 60px;
-  height: 60px;
+  width: 30px;
+  height: 30px;
   position: absolute;
   background: none;
 
-  left: 72%;
-  top: 10%;
+  right: 0;
+  top: -20%;
 
   &::before {
     content: "";
@@ -242,5 +242,18 @@
     height: 2px;
     background: var(--color-white);
     transform: rotate(-45deg);
+  }
+}
+
+.video__wrapper {
+  position: relative;
+
+  iframe {
+    width: 800px;
+    height: 400px;
+
+    @media (max-width: 890px) {
+      width: 100%;
+    }
   }
 }

@@ -1,5 +1,5 @@
 .head {
-  background: url("../../assets/images/catalog/main-img.jpg");
+  background: url("../../assets/images/project/main.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -61,7 +61,7 @@
     }
 
     @media (max-width: 420px) {
-      margin-top: 20px;
+      margin-top: 30px;
     }
   }
 
@@ -80,8 +80,8 @@
       width: 100%;
     }
 
-    @media (max-width: 420px) {
-      font-size: 10px;
+    @media (max-width: 478px) {
+      display: none;
     }
   }
 }
@@ -187,5 +187,19 @@
 
   @media (max-width: 728px) {
     width: 100%;
+    margin-top: 20px;
+  }
+
+  & > p {
+    width: 100%;
+    opacity: 0.7;
+    margin-top: 10px;
+
+    a {
+      text-decoration: underline;
+    }
+
+    font-size: 10px;
+    text-align: center;
   }
 }

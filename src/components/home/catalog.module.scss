@@ -54,6 +54,12 @@
         margin-top: 15px;
         margin-bottom: 15px;
         font-size: 20px;
+        font-family: "Unbounded-md", sans-serif;
+        font-weight: 500;
+
+        @media (max-width: 476px) {
+          font-size: 14px;
+        }
       }
 
       .catalog__item__characteristics {
@@ -101,6 +107,10 @@
 
           &:hover {
             opacity: 0.8;
+          }
+
+          @media (max-width: 476px) {
+            padding: 7px;
           }
         }
 
@@ -162,6 +172,10 @@
       font-size: 18px;
     }
   }
+
+  @media (max-width: 1020px) {
+    padding: 0 0 15px 0;
+  }
 }
 
 .catalog__wrapper {
@@ -173,7 +187,7 @@
       display: flex;
       justify-content: center;
       gap: 5px;
-      
+
       text-align: center;
       margin-top: 30px;
       color: var(--color-blue);

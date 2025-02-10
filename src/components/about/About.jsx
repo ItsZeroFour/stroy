@@ -8,7 +8,7 @@ const AboutScreen = () => {
       <div className="container">
         <div className={style.about__wrapper}>
           <div className={style.about__top}>
-            <h2>ИПОТЕКА</h2>
+            <h2>НАШИ ЦЕННОСТИ</h2>
           </div>
 
           <div className={style.about__content}>

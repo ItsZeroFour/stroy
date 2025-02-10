@@ -13,41 +13,6 @@ const Contacts2 = () => {
       <div className="container">
         <div className={style.contacts__wrapper}>
           <aside className={style.contacts__left}>
-            {!isSuccess ? (
-              <div className={style.contacts__right__content}>
-                <h3>ЗАПОЛНИТЕ ФОРМУ ЗАЯВКИ </h3>
-                <p>и мы вам перезвоним для обсуждения проекта</p>
-
-                <form>
-                  <InputMask
-                    mask="+7 999 999 99 99"
-                    placeholder="Ваш телефон"
-                  />
-
-                  <input type="text" placeholder="Ваше имя" />
-                  <button type="button" onClick={() => setIsSuccess(true)}>
-                    Оставить заявку <img src={arrowRight} alt="arrow right" />
-                  </button>
-                </form>
-
-                <p className={style.contacts__policy}>
-                  Нажимая кнопку “Оставить заявку”, вы соглашаетесь с{" "}
-                  <Link to="/">Политикой конфиденциальности</Link>{" "}
-                </p>
-              </div>
-            ) : (
-              <div className={style.contacts__right__content}>
-                <div className={style.modal__success}>
-                  <img src={okey} alt="okey" />
-                  <h3>ЗАЯВКА ОТПРАВЛЕНА</h3>
-                  <p>
-                    Мы уже получили вашу заявку и перезвоним вам через несколько
-                    минут
-                  </p>
-                </div>
-              </div>
-            )}
-
             <ul>
               <li>
                 <div className={style.contacts__item__num}>
@@ -107,6 +72,41 @@ const Contacts2 = () => {
                 </div>
               </li>
             </ul>
+
+            {!isSuccess ? (
+              <div className={style.contacts__right__content}>
+                <h3>ЗАПОЛНИТЕ ФОРМУ ЗАЯВКИ </h3>
+                <p>и мы вам перезвоним для обсуждения проекта</p>
+
+                <form>
+                  <InputMask
+                    mask="+7 999 999 99 99"
+                    placeholder="Ваш телефон"
+                  />
+
+                  <input type="text" placeholder="Ваше имя" />
+                  <button type="button" onClick={() => setIsSuccess(true)}>
+                    Оставить заявку <img src={arrowRight} alt="arrow right" />
+                  </button>
+                </form>
+
+                <p className={style.contacts__policy}>
+                  Нажимая кнопку “Оставить заявку”, вы соглашаетесь с{" "}
+                  <Link to="/">Политикой конфиденциальности</Link>{" "}
+                </p>
+              </div>
+            ) : (
+              <div className={style.contacts__right__content}>
+                <div className={style.modal__success}>
+                  <img src={okey} alt="okey" />
+                  <h3>ЗАЯВКА ОТПРАВЛЕНА</h3>
+                  <p>
+                    Мы уже получили вашу заявку и перезвоним вам через несколько
+                    минут
+                  </p>
+                </div>
+              </div>
+            )}
           </aside>
 
           <aside className={style.contacts__right}>

@@ -38,8 +38,8 @@ const Header = ({
           <Link to="/">
             <div className={style.header__logo}>
               <svg
-                width="70"
-                height="73"
+                width="50"
+                height="43"
                 viewBox="0 0 40 43"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
