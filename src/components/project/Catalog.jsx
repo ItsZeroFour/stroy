@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Motion, spring } from "react-motion";
 import style from "./catalog.module.scss";
-import catalogHouse1 from "../../assets/images/home/catalog-1.jpg";
-import catalogHouse2 from "../../assets/images/home/catalog-2.jpg";
-import catalogHouse3 from "../../assets/images/home/catalog-3.jpg";
+import catalogHouse1 from "../../assets/images/home/catalog-1.webp";
+import catalogHouse2 from "../../assets/images/home/catalog-2.webp";
+import catalogHouse3 from "../../assets/images/home/catalog-3.webp";
 import { Link } from "react-router-dom";
 import arrowRight3 from "../../assets/icons/home/arrow-right-3.svg";
 import arrowRight2 from "../../assets/icons/home/arrow-right-2.svg";
