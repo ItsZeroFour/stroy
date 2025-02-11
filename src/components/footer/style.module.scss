@@ -272,6 +272,13 @@
       font-size: 14px;
       opacity: 0.7;
 
+      li {
+        a {
+          font-family: "Unbounded", sans-serif;
+          font-weight: 400;
+        }
+      }
+
       @media (max-width: 476px) {
         font-size: 12px;
       }
@@ -339,8 +346,8 @@
   .footer__socials__left__info {
     width: 200px;
     font-size: 12px;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 400;
+    font-family: "Montserrat-md", sans-serif;
+    font-weight: 500;
     opacity: 0.5;
     margin-top: 15px;
   }

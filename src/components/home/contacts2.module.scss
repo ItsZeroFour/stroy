@@ -42,7 +42,7 @@
     }
 
     ul {
-      margin-left: 30px;
+      // margin-left: 30px;
       margin-top: 40px;
 
       display: flex;
@@ -328,6 +328,9 @@
 
   h4 {
     font-size: 20px;
+
+    font-family: "Unbounded-md", sans-serif;
+    font-weight: 500;
 
     @media (max-width: 476px) {
       font-size: 14px;

@@ -19,7 +19,7 @@ const Modal = ({ setOpenModal }) => {
           {!isSuccess ? (
             <div className={style.modal__content__form}>
               <button onClick={() => setOpenModal(false)}>
-                <img src={xMark} alt="close" />
+                <img src={xMark} loading="lazy" alt="close" />
               </button>
 
               <h3>ЗАПОЛНИТЕ ФОРМУ ЗАЯВКИ</h3>
@@ -47,7 +47,7 @@ const Modal = ({ setOpenModal }) => {
                 <img src={xMark} alt="close" />
               </button>
 
-              <img src={okey} alt="okey" />
+              <img src={okey} loading="lazy" alt="okey" />
               <h3>ЗАЯВКА ОТПРАВЛЕНА</h3>
               <p>
                 Мы уже получили вашу заявку и перезвоним вам через несколько

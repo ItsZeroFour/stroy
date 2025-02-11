@@ -110,19 +110,19 @@ const Calculator = ({ setOpenModal, targetRef3 }) => {
                         onChange={(val) => setPrice(val)}
                         trackStyle={{
                           backgroundColor: "#E1A356",
-                          height: 5,
+                          height: 4,
                           marginTop: 5,
                         }}
                         handleStyle={{
                           borderColor: "#E1A356",
-                          height: 15,
-                          width: 15,
+                          height: 12,
+                          width: 12,
                           backgroundColor: "#E1A356",
                           marginTop: 0,
                         }}
                         railStyle={{
                           backgroundColor: "#d3d7de",
-                          height: 5,
+                          height: 4,
                           borderRadius: 0,
                           marginTop: 5,
                         }}
@@ -184,19 +184,19 @@ const Calculator = ({ setOpenModal, targetRef3 }) => {
                           onChange={(val) => setContribution(val)}
                           trackStyle={{
                             backgroundColor: "#E1A356",
-                            height: 5,
+                            height: 4,
                             marginTop: 5,
                           }}
                           handleStyle={{
                             borderColor: "#E1A356",
-                            height: 15,
-                            width: 15,
+                            height: 12,
+                            width: 12,
                             backgroundColor: "#E1A356",
                             marginTop: 0,
                           }}
                           railStyle={{
                             backgroundColor: "#d3d7de",
-                            height: 5,
+                            height: 4,
                             borderRadius: 0,
                             marginTop: 5,
                           }}
@@ -225,19 +225,19 @@ const Calculator = ({ setOpenModal, targetRef3 }) => {
                           onChange={(val) => setContributionProcents(val)}
                           trackStyle={{
                             backgroundColor: "#E1A356",
-                            height: 5,
+                            height: 4,
                             marginTop: 5,
                           }}
                           handleStyle={{
                             borderColor: "#E1A356",
-                            height: 15,
-                            width: 15,
+                            height: 12,
+                            width: 12,
                             backgroundColor: "#E1A356",
                             marginTop: 0,
                           }}
                           railStyle={{
                             backgroundColor: "#d3d7de",
-                            height: 5,
+                            height: 4,
                             borderRadius: 0,
                             marginTop: 5,
                           }}
@@ -303,19 +303,19 @@ const Calculator = ({ setOpenModal, targetRef3 }) => {
                             onChange={(val) => setInterestRate(val)}
                             trackStyle={{
                               backgroundColor: "#E1A356",
-                              height: 5,
+                              height: 4,
                               marginTop: 5,
                             }}
                             handleStyle={{
                               borderColor: "#E1A356",
-                              height: 15,
-                              width: 15,
+                              height: 12,
+                              width: 12,
                               backgroundColor: "#E1A356",
                               marginTop: 0,
                             }}
                             railStyle={{
                               backgroundColor: "#d3d7de",
-                              height: 5,
+                              height: 4,
                               borderRadius: 0,
                               marginTop: 5,
                             }}
@@ -352,19 +352,19 @@ const Calculator = ({ setOpenModal, targetRef3 }) => {
                             onChange={(val) => setAge(val)}
                             trackStyle={{
                               backgroundColor: "#E1A356",
-                              height: 5,
+                              height: 4,
                               marginTop: 5,
                             }}
                             handleStyle={{
                               borderColor: "#E1A356",
-                              height: 15,
-                              width: 15,
+                              height: 12,
+                              width: 12,
                               backgroundColor: "#E1A356",
                               marginTop: 0,
                             }}
                             railStyle={{
                               backgroundColor: "#d3d7de",
-                              height: 5,
+                              height: 4,
                               borderRadius: 0,
                               marginTop: 5,
                             }}

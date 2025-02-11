@@ -18,6 +18,11 @@
     margin-right: 15px;
 
     li {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: start;
+
       height: 130px;
       padding: 20px;
       background: var(--color-white);
@@ -25,7 +30,7 @@
       border-radius: 10px;
 
       p {
-        margin-top: 15px;
+        margin-top: auto;
         font-family: "Unbounded", sans-serif;
         font-weight: 400;
         font-size: 14px;
