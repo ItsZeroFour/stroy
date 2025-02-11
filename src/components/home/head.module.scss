@@ -43,6 +43,10 @@
       font-family: "Montserrat-md", sans-serif;
       font-weight: 500;
       opacity: 0.7;
+
+      @media (max-width: 478px) {
+        font-size: 12px;
+      }
     }
   }
 
@@ -75,13 +79,21 @@
     }
 
     @media (max-width: 476px) {
+      font-size: 24px;
+      line-height: 26px;
+    }
+
+    @media (max-width: 360px) {
       font-size: 18px;
-      line-height: 24px;
     }
   }
 
   @media (max-height: 780px) {
     padding-top: 120px;
+  }
+
+  @media (max-width: 478px) {
+    height: 100%;
   }
 }
 

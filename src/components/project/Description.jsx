@@ -22,6 +22,10 @@ const Description = ({ setOpenModal }) => {
     setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
   };
 
+  const handleImageClick = (index) => {
+    setCurrentImage(index);
+  };
+
   return (
     <section className={style.description}>
       <div className="container">
@@ -50,7 +54,7 @@ const Description = ({ setOpenModal }) => {
 
               <ul>
                 {images.map((image, index) => (
-                  <li key={index}>
+                  <li key={index} onClick={() => handleImageClick(index)}>
                     <img src={image} alt={`slider ${index + 1}`} />
                   </li>
                 ))}

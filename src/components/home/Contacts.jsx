@@ -16,7 +16,7 @@ const Contacts = ({ targetRef }) => {
       <div className="container">
         <div className={style.contacts__wrapper}>
           <aside className={style.contacts__left}>
-            <h2>КАТАЛОГ ПРОЕКТОВ ПОД ВАШ БЮДЖЕТ</h2>
+            <h2>КАТАЛОГ ПРОЕКТОВ <br /> ПОД ВАШ БЮДЖЕТ</h2>
 
             <ul>
               <li>
