@@ -46,6 +46,11 @@ const About = () => {
                 смелые идеи и желания наших клиентов в строительство дома мечты.
               </p>
 
+              <Link className={style.about__link__mobile} to="/">
+                Узнать больше о компании{" "}
+                <img src={arrowRight} alt="Узнать больше о компании" />
+              </Link>
+
               <ul>
                 <li>
                   <img src={aboutIcon1} alt="Аккредитованный застройщик" />
@@ -78,7 +83,7 @@ const About = () => {
                 </li>
               </ul>
 
-              <Link to="/">
+              <Link className={style.about__link} to="/">
                 Узнать больше о компании{" "}
                 <img src={arrowRight} alt="Узнать больше о компании" />
               </Link>

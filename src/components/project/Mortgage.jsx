@@ -28,7 +28,7 @@ const Mortgage = ({ setOpenModal }) => {
               </p>
 
               <Link to="#contacts" onClick={() => setOpenModal(true)}>
-                Оставить заявку <img src={arrowRight} alt="arrow right" />
+                Обсудить проект <img src={arrowRight} alt="arrow right" />
               </Link>
             </aside>
             <aside className={style.mortgage__right}>

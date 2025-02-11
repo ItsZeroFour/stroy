@@ -3,6 +3,8 @@ import style from "./calculator.module.scss";
 import calculator from "../../assets/icons/home/Calculator.svg";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
+import { Link } from "react-router-dom";
+import calendar from "../../assets/icons/Calendar.svg";
 
 const Calculator = ({ setOpenModal, targetRef3 }) => {
   const [price, setPrice] = useState(6000000);
@@ -20,11 +22,15 @@ const Calculator = ({ setOpenModal, targetRef3 }) => {
 
   useEffect(() => {
     const calculateLoan = () => {
-      const principal = rublesContribution ? price - contribution : price - (price * contributionProcents / 100);
+      const principal = rublesContribution
+        ? price - contribution
+        : price - (price * contributionProcents) / 100;
       const monthlyInterestRate = interestRate / 100 / 12;
       const numberOfPayments = age * 12;
 
-      const monthly = (principal * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -numberOfPayments));
+      const monthly =
+        (principal * monthlyInterestRate) /
+        (1 - Math.pow(1 + monthlyInterestRate, -numberOfPayments));
       const total = monthly * numberOfPayments;
       const overpay = total - principal;
 
@@ -35,7 +41,14 @@ const Calculator = ({ setOpenModal, targetRef3 }) => {
     };
 
     calculateLoan();
-  }, [price, contribution, contributionProcents, rublesContribution, interestRate, age]);
+  }, [
+    price,
+    contribution,
+    contributionProcents,
+    rublesContribution,
+    interestRate,
+    age,
+  ]);
 
   const changePriceWiaButton = (appearance) => {
     if (appearance === "-") {
@@ -102,7 +115,7 @@ const Calculator = ({ setOpenModal, targetRef3 }) => {
                   <div className={style.calculator__range}>
                     <button onClick={() => changePriceWiaButton("-")}>-</button>
                     <div className={style.calculator__range__value}>
-                      <p>{new Intl.NumberFormat("ru-RU").format(price)}</p>
+                      <p>{new Intl.NumberFormat("ru-RU").format(price)} ₽</p>
                       <Slider
                         value={price}
                         min={6000000}
@@ -175,7 +188,8 @@ const Calculator = ({ setOpenModal, targetRef3 }) => {
                       </button>
                       <div className={style.calculator__range__value}>
                         <p>
-                          {new Intl.NumberFormat("ru-RU").format(contribution)}
+                          {new Intl.NumberFormat("ru-RU").format(contribution)}{" "}
+                          ₽
                         </p>
                         <Slider
                           value={contribution}
@@ -385,45 +399,56 @@ const Calculator = ({ setOpenModal, targetRef3 }) => {
               </ul>
             </aside>
             <aside className={style.calculator__right}>
-              <div className={style.calculator__right__elem}>
-                <div className={style.calculator__right__item}>
-                  <p>Сумма кредита</p>
-                  <h3>{new Intl.NumberFormat("ru-RU").format(loanAmount)} ₽</h3>
-                </div>
+              <div>
+                <div className={style.calculator__right__elem}>
+                  <div className={style.calculator__right__item}>
+                    <p>Сумма кредита</p>
+                    <h3>
+                      {new Intl.NumberFormat("ru-RU").format(loanAmount)} ₽
+                    </h3>
+                  </div>
 
-                <div className={style.calculator__right__item}>
-                  <p>Процентная ставка</p>
-                  <h3>{interestRate}%</h3>
+                  <div className={style.calculator__right__item}>
+                    <p>Процентная ставка</p>
+                    <h3>{interestRate}%</h3>
+                  </div>
+                </div>
+                <div className={style.calculator__right__elem}>
+                  <div className={style.calculator__right__item}>
+                    <p>Ежемесячный платеж</p>
+                    <h3>
+                      {new Intl.NumberFormat("ru-RU").format(monthlyPayment)} ₽
+                    </h3>
+                  </div>
+
+                  <div className={style.calculator__right__item}>
+                    <p>Срок</p>
+                    <h3 className={style.calculator__right__item__spec}>
+                      {Math.floor(age)} лет{" "}
+                      {Math.round((age - Math.floor(age)) * 12)} мес
+                    </h3>
+                  </div>
+                </div>
+                <div className={style.calculator__right__elem}>
+                  <div className={style.calculator__right__item}>
+                    <p>Всего к выплате (долг + проценты)</p>
+                    <h3 className={style.calculator__right__item__spec}>
+                      {new Intl.NumberFormat("ru-RU").format(totalPayment)} ₽
+                    </h3>
+                  </div>
+
+                  <div className={style.calculator__right__item}>
+                    <p>Сумма переплаты (проценты)</p>
+                    <h3 className={style.calculator__right__item__spec}>
+                      {new Intl.NumberFormat("ru-RU").format(overpayment)} ₽
+                    </h3>
+                  </div>
                 </div>
               </div>
-              <div className={style.calculator__right__elem}>
-                <div className={style.calculator__right__item}>
-                  <p>Ежемесячный платеж</p>
-                  <h3>{new Intl.NumberFormat("ru-RU").format(monthlyPayment)} ₽</h3>
-                </div>
 
-                <div className={style.calculator__right__item}>
-                  <p>Срок</p>
-                  <h3 className={style.calculator__right__item__spec}>
-                    {Math.floor(age)} лет {Math.round((age - Math.floor(age)) * 12)} мес
-                  </h3>
-                </div>
-              </div>
-              <div className={style.calculator__right__elem}>
-                <div className={style.calculator__right__item}>
-                  <p>Всего к выплате (долг + проценты)</p>
-                  <h3 className={style.calculator__right__item__spec}>
-                    {new Intl.NumberFormat("ru-RU").format(totalPayment)} ₽
-                  </h3>
-                </div>
-
-                <div className={style.calculator__right__item}>
-                  <p>Сумма переплаты (проценты)</p>
-                  <h3 className={style.calculator__right__item__spec}>
-                    {new Intl.NumberFormat("ru-RU").format(overpayment)} ₽
-                  </h3>
-                </div>
-              </div>
+              {/* <Link to="#">
+                <img src={calendar} alt="calendar" /> График платежей
+              </Link> */}
 
               <button onClick={() => setOpenModal(true)}>
                 Оставить заявку

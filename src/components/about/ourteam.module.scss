@@ -18,6 +18,10 @@
       font-size: 18px;
     }
   }
+
+  @media (max-width: 1020px) {
+    padding: 0 0 15px 0;
+  }
 }
 
 .ourteam__wrapper {
@@ -73,6 +77,10 @@
       @media (max-width: 840px) {
         &:not(:first-child) {
           width: 48.6%;
+
+          h5 {
+            font-size: 10px;
+          }
         }
       }
 
@@ -85,6 +93,10 @@
           width: 100%;
         }
       }
+
+      @media (max-width: 520px) {
+        gap: 10px;
+      }
     }
 
     @media (max-width: 740px) {
@@ -92,10 +104,14 @@
       grid-template-columns: 1fr 1fr;
       grid-template-rows: auto auto auto;
       gap: 10px;
-      
+
       li:first-child {
         grid-column: 1 / -1;
       }
+    }
+
+    @media (max-width: 520px) {
+      margin-top: 15px;
     }
   }
 }

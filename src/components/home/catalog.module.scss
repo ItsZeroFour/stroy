@@ -105,12 +105,20 @@
           border-radius: 7px;
           transition: all 0.2s ease;
 
+          font-family: "Unbounded-md", sans-serif;
+          font-weight: 500;
+
           &:hover {
             opacity: 0.8;
           }
 
           @media (max-width: 476px) {
             padding: 7px;
+          }
+
+          @media (max-width: 478px) {
+            font-size: 12px;
+            padding: 9px 14px;
           }
         }
 
@@ -129,6 +137,11 @@
           font-family: "Montserrat-md", sans-serif;
           font-weight: 500;
           font-size: 12px;
+        }
+
+        @media (max-width: 478px) {
+          width: 100%;
+          text-align: center;
         }
       }
 

@@ -34,6 +34,10 @@
       font-size: 18px;
     }
   }
+
+  @media (max-width: 1020px) {
+    padding: 0 0 15px 0;
+  }
 }
 
 .reviews__main {
@@ -177,5 +181,9 @@
 
   @media (max-width: 1320px) {
     flex-direction: column;
+  }
+
+  @media (max-width: 520px) {
+    margin-top: 15px;
   }
 }

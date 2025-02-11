@@ -34,6 +34,10 @@
       font-size: 18px;
     }
   }
+
+  @media (max-width: 1020px) {
+    padding: 0 0 15px 0;
+  }
 }
 
 .whywe__wrapper {
@@ -89,5 +93,12 @@
     @media (max-width: 980px) {
       flex-direction: column;
     }
+
+    @media (max-width: 520px) {
+      margin-top: 15px;
+      gap: 10px;
+    }
+
+
   }
 }

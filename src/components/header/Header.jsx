@@ -35,7 +35,7 @@ const Header = ({
     >
       <div className="container">
         <div className={style.header__wrapper}>
-          <Link to="/">
+          <Link to="/" onClick={() => setOpenMenu(false)}>
             <div className={style.header__logo}>
               <svg
                 width="50"

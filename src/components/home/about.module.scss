@@ -62,6 +62,24 @@
       span {
         font-weight: bold;
       }
+
+      @media (max-width: 478px) {
+        font-size: 12px;
+      }
+    }
+
+    .about__link {
+      @media (max-width: 478px) {
+        display: none;
+      }
+    }
+
+    .about__link__mobile {
+      display: none;
+
+      @media (max-width: 478px) {
+        display: block;
+      }
     }
 
     ul {
@@ -78,6 +96,11 @@
         h5 {
           font-family: "Unbounded", sans-serif;
           font-weight: 400;
+          font-size: 14px;
+
+          @media (max-width: 478px) {
+            font-size: 12px;
+          }
         }
 
         p {
@@ -98,6 +121,10 @@
 
       @media (max-width: 1140px) {
         margin-top: 30px;
+      }
+
+      @media (max-width: 478px) {
+        margin-top: 15px;
       }
     }
 

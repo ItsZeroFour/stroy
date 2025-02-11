@@ -36,8 +36,8 @@
         text-align: center;
       }
 
-      @media (max-width: 380px) {
-        font-size: 24px;
+      @media (max-width: 478px) {
+        font-size: 20px;
       }
     }
 
@@ -104,6 +104,10 @@
         font-family: "Unbounded-bd", sans-serif;
         font-weight: 700;
         font-size: 20px;
+
+        @media (max-width: 478px) {
+          font-size: 12px;
+        }
       }
 
       p {

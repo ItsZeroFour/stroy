@@ -349,12 +349,30 @@ const CatalogList = () => {
                   {isDropdownOpen && (
                     <ul>
                       <li onClick={() => handleOptionClick("По умолчанию")}>
+                        <div
+                          className={`${style.catalog__top__select__select} ${
+                            selectedOption === "По умолчанию" &&
+                            style.catalog__top__select__select__active
+                          }`}
+                        ></div>
                         По умолчанию
                       </li>
                       <li onClick={() => handleOptionClick("По возрастанию")}>
+                        <div
+                          className={`${style.catalog__top__select__select} ${
+                            selectedOption === "По возрастанию" &&
+                            style.catalog__top__select__select__active
+                          }`}
+                        ></div>
                         По возрастанию
                       </li>
                       <li onClick={() => handleOptionClick("По убыванию")}>
+                        <div
+                          className={`${style.catalog__top__select__select} ${
+                            selectedOption === "По убыванию" &&
+                            style.catalog__top__select__select__active
+                          }`}
+                        ></div>
                         По убыванию
                       </li>
                     </ul>
@@ -581,9 +599,7 @@ const CatalogList = () => {
               </ul>
             </div>
 
-            <p>
-              <p>Всего 1 234 проекта</p>
-            </p>
+            <p>Всего 1 234 проекта</p>
           </div>
 
           <ul>
