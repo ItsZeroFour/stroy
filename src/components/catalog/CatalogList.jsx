@@ -233,6 +233,7 @@ const CatalogList = () => {
       floorsFrom: "",
       floorsTo: "",
     });
+
     setCatalogList(originalCatalogList);
     setOpenFilter(false);
   };
@@ -265,11 +266,10 @@ const CatalogList = () => {
     );
     setOpenFilter(false);
   };
-
   const handleRemoveFilter = (filterName) => {
     setFilterValues((prevValues) => ({
       ...prevValues,
-      [filterName]: "",
+      [filterName]: filterName === "type" ? "Все дома" : "",
       ...(filterName === "priceFrom" || filterName === "priceTo"
         ? { priceFrom: "", priceTo: "" }
         : {}),
@@ -424,6 +424,14 @@ const CatalogList = () => {
                                       handleOptionClick2("Все дома")
                                     }
                                   >
+                                    <div
+                                      className={`${
+                                        style.catalog__top__select__select
+                                      } ${
+                                        selectedOption2 === "Все дома" &&
+                                        style.catalog__top__select__select__active
+                                      }`}
+                                    ></div>
                                     Все дома
                                   </li>
                                   <li
@@ -431,13 +439,29 @@ const CatalogList = () => {
                                       handleOptionClick2("Каркасные дома")
                                     }
                                   >
+                                    <div
+                                      className={`${
+                                        style.catalog__top__select__select
+                                      } ${
+                                        selectedOption2 === "Каркасные дома" &&
+                                        style.catalog__top__select__select__active
+                                      }`}
+                                    ></div>
                                     Каркасные дома
                                   </li>
                                   <li
                                     onClick={() =>
-                                      handleOptionClick2("Каменные дома")
+                                      handleOptionClick2("По возрастанию")
                                     }
                                   >
+                                    <div
+                                      className={`${
+                                        style.catalog__top__select__select
+                                      } ${
+                                        selectedOption2 === "Каменные дома" &&
+                                        style.catalog__top__select__select__active
+                                      }`}
+                                    ></div>
                                     Каменные дома
                                   </li>
                                 </ul>

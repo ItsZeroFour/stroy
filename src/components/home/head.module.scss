@@ -13,7 +13,7 @@
   color: var(--color-white);
 
   @media (max-width: 1520px) {
-    padding-top: 60px;
+    // padding-top: 60px;
   }
 
   @media (max-width: 900px) {
@@ -81,7 +81,6 @@
   }
 
   @media (max-height: 780px) {
-    height: 100%;
     padding-top: 120px;
   }
 }

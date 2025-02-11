@@ -4,14 +4,13 @@ import Header from "./components/header/Header";
 import Modal from "./components/Modal";
 import { useEffect, useRef, useState } from "react";
 import "locomotive-scroll/dist/locomotive-scroll.css";
-import LocomotiveScroll from "locomotive-scroll";
-import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import Footer from "./components/footer/Footer";
 import Catalog from "./pages/catalog/Catalog";
 import Project from "./pages/project/Project";
 import About from "./pages/about/About";
 import ScrollToTop from "./utils/ScrollToTop";
 import NotFound from "./pages/not_found/NotFound";
+import Loading from "./pages/loading/Loading";
 
 function App() {
   const [openModal, setOpenModal] = useState(false);
@@ -110,6 +109,7 @@ function App() {
               path="/about"
               element={<About setOpenModal={setOpenModal} />}
             />
+            <Route path="/loading" element={<Loading />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
